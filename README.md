@@ -60,6 +60,10 @@ Se puede ver su perfil de ONG y desarrollo en su sitio web  -->  [Aquí](https:/
 
 <br>
 
+# Datos
+
+La fuente de datos a utilizar es alimentada en parte por datos de la ONG Potenciar Solidario
+
 
 # Autor
 
