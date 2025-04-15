@@ -1,0 +1,53 @@
+Diccionario de datos
+tablas: Detalles Ing Egres
+
+Nro de Cuenta: un numero de referencia para las cuentas
+Nombre de Cuenta: Nombre de la Cuenta
+Tipo de Cuenta: Clasificacion de la cuenta
+Descripcion: Una descripcion de la cuenta
+
+
+
+Proveedores
+
+Numero Proveedor: Numero de referencia de proveedor
+Nombre Proveedor: Nombre de proveedor
+CUIT: CUIT (Clave unica de identificacion tributaria)
+Categoria Proveedor: La categoria asignada de proveedor
+Tipo de Contribucion: La clasificacion del tipo de contribuyente
+Observaciones: 
+Contacto: Contacto de la empresa/organizacion
+Correo Electronico: Correo de contacto
+Telefono: Telefono de contacto
+Razon Social: Nombre legal de una empresa
+Importe: Importe abonado al proveedor
+Fecha: fecha de pago del importe
+Nro_Cuenta: Numero de referencia de la cuenta en la que se asigna el importe
+Ciudad: Ciudad del proveedor
+Pais: Pais del proveedor
+
+
+
+
+Donantes
+
+Numero: Numero de referencia del donante
+Nombre: Nombre del donante
+Tipo: Tipo de donante
+Contacto: Contacto de referencia del donante
+Cargo: -
+Correo Electronico: Correo del contacto
+Telefono: telefono de contacto
+Observaciones: Observaciones
+Razon Social: Nombre de empresa/organizacion
+Tipo de Contribuyente: Tipo de contribuyente
+CUIT: CUIT (Clave unica de identificacion tributaria)
+Alta: Fecha de Alta como donante a la organizacion
+Baja: fecha de Baja como donante a la organizacion
+Activo: Estado del donante(si esta activo o no)
+Frecuencia: Frecuencia de donaciones del donante
+Fecha_Donacion: Fecha de la donacion
+Importe: improte de la donacion
+Nro de Cuenta: Numero de referencia de la cuenta en la que se asigna el importe
+
+
