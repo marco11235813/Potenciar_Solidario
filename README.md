@@ -62,7 +62,11 @@ Se puede ver su perfil de ONG y desarrollo en su sitio web  -->  [Aquí](https:/
 
 # Datos
 
-La fuente de datos a utilizar es alimentada en parte por datos de la ONG Potenciar Solidario
+La fuente de datos a utilizar es en parte datos de la ONG Potenciar Solidario con 3 datasets principales:
+
+* Proveedores: Donde se detallan los proveedores a los cuales se les realizan compras o destinan recursos con fines varios, se detallan en parte montos y ubiciones entre otros datos de relevancia.
+* Donantes: Se compone de los datos de los donantes y donaciones hacia la organizacion, detallando datos sobre donantes como su nombre, ubicacion y si se encuantra activo y sobre las donaciones como la frecuencia y el monto total.
+* Detalles_Ing_Egres: Se detallan los principales items de relevancia contable en la organizacion en cuanto a la generacion de ingresos, a los gastos, pagos, al patrimonio y activos y pasivos de la misma entre otras cosas.
 
 
 # Autor
