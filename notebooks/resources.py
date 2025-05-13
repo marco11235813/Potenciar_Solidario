@@ -554,7 +554,8 @@ def validar_nro_proveedor(df, columna= 'Número Proveedor'):
 #----------------------------------------------------------------------------------------------------
 def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
 
-    """
+    """Valida que los datos de la columna cumplan correctamente con 
+    el formato de dato asignado para la misma
 
     """
 
@@ -574,7 +575,8 @@ def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
 #----------------------------------------------------------------------------------------------------
 def validar_cuit(df, columna= 'CUIT'):
 
-    """
+    """Valida que los datos de la columna cumplan correctamente con 
+    el formato de dato asignado para la misma
 
     """
 
@@ -596,7 +598,8 @@ def validar_cuit(df, columna= 'CUIT'):
 def validar_categoria(df, columna= 'Categoria Proveedor'):
 
     """
-    
+    Valida que los datos de la columna cumplan correctamente con 
+    el formato de dato asignado para la misma
     
     """
 
@@ -615,7 +618,8 @@ def validar_categoria(df, columna= 'Categoria Proveedor'):
 def validar_tipo_contribuyente(df, columna= 'Tipo de Contribuyente'):
 
     """
-    
+    Valida que los datos de la columna cumplan correctamente con 
+    el formato de dato asignado para la misma
     """
 
     formato_correcto = r'^[A-Za-zÁÉÍÓÚáéíóú]+$'
@@ -625,9 +629,128 @@ def validar_tipo_contribuyente(df, columna= 'Tipo de Contribuyente'):
     if not datos_incorrectos.empty:
         print('Existen datos con formato incorrecto')
         print(datos_incorrectos[columna])
+        print('Los tipos de contribuyentes son los siguientes:\n',set(df[columna]))
+        return
     else:
         print('Todos los tipos de contribuyente tienen el formato correcto')
         print('Los tipos de contribuyentes son los siguientes:\n',set(df[columna]))
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_contacto(df, columna= 'Contacto'):
+
+
+    """Valida que los datos de la columna cumplan correctamente con 
+    el formato de dato asignado para la misma
+
+    """
+
+
+    # expresion regular que valida los numbres compuestos por al menos 2 palabras, cada una comenzada por mayuscula seguidas de letras minusculas
+    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$'
+
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos los nombres de contacto tienen el formato correcto')
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_correo(df, columna= 'Correo Electrónico'):
+
+    """
+    
+    
+    """
+
+    datos_incorrectos = []
+
+    for correo in df[columna]:
+        if not '@' in correo:
+            datos_incorrectos.append(correo)
+        else:
+            continue
+    
+    if len(datos_incorrectos) != 0:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos)
+    else:
+        print('Todos los nombres de contacto tienen el formato correcto')
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_telefono(df, columna= 'Teléfono'):
+
+    """
+    
+    
+    """
+
+    formato_correcto = r'^[0-9]+(?:-[0-9]+)$'
+
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos los numeros de telefono tienen el formato correcto')
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_razonsocial(df, columna= 'Razón Social'):
+
+    """
+    
+    
+    """
+
+    razon = ["S.R.L.", "Cooperativa", "S.A."]
+
+    datos_incorrectos = list()
+
+    for rs in df[columna]:
+        if rs not in razon:
+            datos_incorrectos.append(rs)
+        else:
+            continue
+
+    if len(datos_incorrectos) != 0:
+        print("Existen datos con formato incorrecto o valores incorrectos")
+        print(set(datos_incorrectos))
+    else:
+        print("Todos los datos son correctos")
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_importe(df, columna= 'Importe') -> str:
+
+    """
+    
+    
+    """
+
+    datos_incorrectos = list()
+
+    for num in df[columna]:
+        if isinstance(num, int):
+            continue
+        else:
+            datos_incorrectos.append(num)
+
+    if len(datos_incorrectos) > 0:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos)
+    else:
+        print('Todos los datos tienen el formato correcto')
 
 
 #----------------------------------------------------------------------------------------------------
