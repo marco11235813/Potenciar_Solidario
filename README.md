@@ -16,6 +16,20 @@
 ![Google Colaboratory](https://img.shields.io/badge/-Google%20Colaboratory-black?style=flat-square&logo=googlecolaboratory)
 ![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-black?style=flat&logo=visual-studio-code&logoColor=007ACC)
 
+<br>
+<br>
+
+# Indice
+
+- [Introduccion](#Introduccion)
+- [Potenciar Solidario](#Potenciar%20Solidario)
+- [Datos](#Datos)
+- [Autor](#Autor)
+
+<br>
+<br>
+<br>
+
 # Introduccion
 
 <p align= center>

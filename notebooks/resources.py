@@ -552,6 +552,86 @@ def validar_nro_proveedor(df, columna= 'Número Proveedor'):
 
 
 #----------------------------------------------------------------------------------------------------
+def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
+
+    """
+
+    """
+
+
+    # expresion regular que valida los numbres compuestos por al menos 2 palabras, cada una comenzada por mayuscula seguidas de letras minusculas
+    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$'
+
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos los nombres tienen el formato correcto')
+
+
+#----------------------------------------------------------------------------------------------------
+def validar_cuit(df, columna= 'CUIT'):
+
+    """
+
+    """
+
+    # Expresión regular: dos dígitos, guion, ocho dígitos, guion, un dígito
+    formato_cuit = r'^\d{2}-\d{8}-\d$'
+
+    datos_incorrectos= df[~df[columna].astype(str).str.match(formato_cuit)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos los CUIT tienen el formato correcto')
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_categoria(df, columna= 'Categoria Proveedor'):
+
+    """
+    
+    
+    """
+
+    formato_correcto = r'^[A-Za-záéíóúÁÉÍÓÚÑñÜü ]+$'
+
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos las categorias tienen el formato correcto')
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_tipo_contribuyente(df, columna= 'Tipo de Contribuyente'):
+
+    """
+    
+    """
+
+    formato_correcto = r'^[A-Za-zÁÉÍÓÚáéíóú]+$'
+
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else:
+        print('Todos los tipos de contribuyente tienen el formato correcto')
+        print('Los tipos de contribuyentes son los siguientes:\n',set(df[columna]))
+
+
+#----------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------
 
 def main():
