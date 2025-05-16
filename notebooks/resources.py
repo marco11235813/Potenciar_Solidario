@@ -754,6 +754,88 @@ def validar_importe(df, columna= 'Importe') -> str:
 
 
 #----------------------------------------------------------------------------------------------------
+
+def validar_fecha(df, columna= 'Fecha'):
+
+    """
+    
+    
+    """
+
+    formato_correcto = pd.to_datetime(df[columna], format= '%Y-%m-%d', errors= 'coerce')
+    datos_incorrectos = df[formato_correcto.isna()]
+
+    try:
+        if not datos_incorrectos.empty:
+            print('Existen datos con fecha invalida')
+            print(datos_incorrectos[columna])
+        else:
+            print('Todas las fechas estan en formato correcto y son validas')
+    except Exception as e:
+        print('Existen datos con formato incorrecto')
+
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_nrocuenta(df, columna= 'Nro_Cuenta'):
+
+    """
+    
+    """
+
+    formato_correcto = r'^[0-9]+$'
+    # Filtra las filas donde el valor NO cumple con el formato
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen datos con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else: 
+        print('Todos los datos tienen formato correcto')
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_ciudad(df, columna= 'Ciudad'):
+
+    """
+    
+    
+    """
+    
+    formato_correcto = r'^[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü`]+(?:\sA-Za-zÁÉÍÓÚáéíóúÑñÜü`+)*$'
+    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+    if not datos_incorrectos.empty:
+        print('Existen ciudades con formato incorrecto')
+        print(datos_incorrectos[columna])
+    else: 
+        print('Todas las ciudades tienen formato correcto')
+
+
+#----------------------------------------------------------------------------------------------------
+
+def validar_pais(df, columna= 'Pais'):
+
+    """
+    
+    """
+
+    # formato_correcto = r'^/d(9)[ARGENTI][argenti]$'
+    # datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+    datos_form_inco = [x for x in df[columna] if x != 'Argentina']
+
+
+    if len(datos_form_inco):
+        print('Existen datos incorrectos o con formato incorrecto')
+        print(datos_form_inco)
+    else:
+        print('Todos los datos tienen formato correcto y son correctos')
+
+
+#----------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------
 
