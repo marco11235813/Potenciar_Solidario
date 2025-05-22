@@ -533,14 +533,14 @@ def descripcion_distribucion(df: pd.DataFrame):
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_nro_proveedor(df, columna= 'Número Proveedor'):
+def validar_nro(df, columna):
 
     """Valida que los datos de la columna cumplan correctamente con 
     el formato de dato asignado para la misma"""
 
 
     # Expresión regular para validar el formato 'P' seguido de 5 dígitos
-    formato_correcto = r'^P\d{5}$'
+    formato_correcto = r'^[PD]\d{5}$'
 
     datos_incorrectos = df[~df[columna].astype('str').str.match(formato_correcto)]
 
@@ -552,7 +552,7 @@ def validar_nro_proveedor(df, columna= 'Número Proveedor'):
 
 
 #----------------------------------------------------------------------------------------------------
-def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
+def validar_nombre(df, columna):
 
     """Valida que los datos de la columna cumplan correctamente con 
     el formato de dato asignado para la misma
@@ -561,7 +561,7 @@ def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
 
 
     # expresion regular que valida los numbres compuestos por al menos 2 palabras, cada una comenzada por mayuscula seguidas de letras minusculas
-    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$'
+    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ.]+)*$'
 
     datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
 
@@ -573,7 +573,7 @@ def validar_nombre_prov(df, columna= 'Nombre Proveedor'):
 
 
 #----------------------------------------------------------------------------------------------------
-def validar_cuit(df, columna= 'CUIT'):
+def validar_cuit(df, columna):
 
     """Valida que los datos de la columna cumplan correctamente con 
     el formato de dato asignado para la misma
@@ -581,7 +581,7 @@ def validar_cuit(df, columna= 'CUIT'):
     """
 
     # Expresión regular: dos dígitos, guion, ocho dígitos, guion, un dígito
-    formato_cuit = r'^\d{2}-\d{8}-\d$'
+    formato_cuit = r'^\d{2}-\d{8}-\d{1,2}$'
 
     datos_incorrectos= df[~df[columna].astype(str).str.match(formato_cuit)]
 
