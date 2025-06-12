@@ -615,7 +615,7 @@ def validar_categoria(df, columna= 'Categoria Proveedor'):
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_tipo_contribuyente(df, columna= 'Tipo de Contribuyente'):
+def validar_tipo_contribuyente(df, columna):
 
     """
     Valida que los datos de la columna cumplan correctamente con 
@@ -661,7 +661,7 @@ def validar_contacto(df, columna= 'Contacto'):
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_correo(df, columna= 'Correo Electrónico'):
+def validar_correo(df, columna):
 
     """
     
