@@ -648,7 +648,7 @@ def validar_contacto(df, columna= 'Contacto'):
 
 
     # expresion regular que valida los numbres compuestos por al menos 2 palabras, cada una comenzada por mayuscula seguidas de letras minusculas
-    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)+$'
+    formato_correcto = r'^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑa-záéíóúñ]+)+$'
 
     datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
 
