@@ -684,34 +684,54 @@ def validar_correo(df, columna):
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_telefono(df, columna= 'Teléfono'):
+## REVISAR EL FORMATEO DE LAS CADENAS (ESPACIOS EN BLANCO AL PRINCIPIO Y AL FINAL DE CADA UNA) ya  que la validacion se realiza incorrectamente 
+## en la aplicacion de la funcion.
+
+def validar_telefono(df, columna):
 
     """
     
     
     """
 
-    formato_correcto = r'^[0-9]+(?:-[0-9]+)$'
+    # df[columna] = [df[columna].astype(str).str.strip()]
+    # lista  = [x.strip() for x in df[columna]]
+    # df[columna] = lista
 
-    datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+    if columna == 'Telefono':
+        #'(+)55 21 9876 5432', '(+)56 9 7654 3210', '(+)598 5550-9219',
 
-    if not datos_incorrectos.empty:
-        print('Existen datos con formato incorrecto')
-        print(datos_incorrectos[columna])
+        formato_correcto = r'^\(\+\)?\s?\d{1,4}[\s\-]?\d{1,5}[\s\-]?\d{1,5}$'
+
+        datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+        if not datos_incorrectos.empty:
+            print('Existen datos con formato incorrecto')
+            print(datos_incorrectos[columna])
+        else:
+            print('Todos los numeros de telefono tienen el formato correcto')
     else:
-        print('Todos los numeros de telefono tienen el formato correcto')
+
+        formato_correcto = r'^[0-9]+(?:-[0-9]+)$'
+
+        datos_incorrectos = df[~df[columna].astype(str).str.match(formato_correcto)]
+
+        if not datos_incorrectos.empty:
+            print('Existen datos con formato incorrecto')
+            print(datos_incorrectos[columna])
+        else:
+            print('Todos los numeros de telefono tienen el formato correcto')
 
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_razonsocial(df, columna= 'Razón Social'):
+def validar_razonsocial(df, columna):
 
     """
     
     
     """
 
-    razon = ["S.R.L.", "Cooperativa", "S.A."]
+    razon = ["S.R.L.", "Cooperativa", "S.A.", "SAS", "GOB", "ONG"]
 
     datos_incorrectos = list()
 
@@ -755,7 +775,7 @@ def validar_importe(df, columna= 'Importe') -> str:
 
 #----------------------------------------------------------------------------------------------------
 
-def validar_fecha(df, columna= 'Fecha'):
+def validar_fecha(df, columna):
 
     """
     
